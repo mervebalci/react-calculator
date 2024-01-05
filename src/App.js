@@ -1,10 +1,11 @@
 import Wrapper from "./components/Wrapper";
+import Screen from "./components/Screen";
 
 export default function App() {
   return (
     <div>
       <Wrapper>
-        <h1>App</h1>
+        <Screen />
       </Wrapper>
     </div>
   );
