@@ -20,6 +20,10 @@ export default function Button({ value }) {
     const buttons = {
       ".": decimalClick,
       "C": clearClick,
+      "+": optClick,
+      "-": optClick,
+      "x": optClick,
+      "÷": optClick,
     }
     if (buttons[value]) {
       return buttons[value]()
@@ -63,6 +67,18 @@ export default function Button({ value }) {
         opt: "",
         number: 0,
         result: 0
+      })
+    )
+  }
+
+
+  // When user clicks on any opt buttons "+ - x ÷"
+  function optClick() {
+    return (
+      setCalc({
+        opt: value,
+        number: 0,
+        result: !calc.result && calc.number ? calc.number : calc
       })
     )
   }
