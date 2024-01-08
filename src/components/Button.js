@@ -19,6 +19,7 @@ export default function Button({ value }) {
   function handleButtonClick() {
     const buttons = {
       ".": decimalClick,
+      "C": clearClick,
     }
     return buttons[value]()
   }
@@ -28,6 +29,18 @@ export default function Button({ value }) {
   function decimalClick() {
     return (
       setCalc({...calc, number: !calc.number.toString().includes('.') ? calc.number + value : calc.number})
+    )
+  }
+
+
+  // When user clicks on clear "C" button
+  function clearClick() {
+    return (
+      setCalc({
+        opt: "",
+        number: 0,
+        result: 0
+      })
     )
   }
 
