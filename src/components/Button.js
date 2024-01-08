@@ -81,7 +81,7 @@ export default function Button({ value }) {
       setCalc({
         opt: value,
         number: 0,
-        result: !calc.result && calc.number ? calc.number : calc
+        result: !calc.result && calc.number ? calc.number : calc.result
       })
     )
   }
