@@ -1,3 +1,6 @@
+import { useContext } from "react";
+import { CalcContext } from "../context/CalcContext";
+
 function getStyleName(valueName) {
   const className = {
     "C": "clear",
@@ -11,7 +14,26 @@ function getStyleName(valueName) {
 }
 
 export default function Button({ value }) {
+  const { calc, setCalc } = useContext(CalcContext);
+
+  function handleButtonClick() {
+    const buttons = {
+      ".": decimalClick,
+    }
+    return buttons[value]()
+  }
+
+
+  // When user clicks on decimal point "." button
+  function decimalClick() {
+    return (
+      setCalc({...calc, number: !calc.number.toString().includes('.') ? calc.number + value : calc.number})
+    )
+  }
+
   return (
-    <button className={`${getStyleName(value)} button`}>{value}</button>
+    <button onClick={handleButtonClick} className={`${getStyleName(value)} button`}>
+      {value}
+    </button>
   )
 }
