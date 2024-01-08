@@ -24,6 +24,7 @@ export default function Button({ value }) {
       "-": optClick,
       "x": optClick,
       "÷": optClick,
+      "=": equalsClick,
     }
     if (buttons[value]) {
       return buttons[value]()
@@ -82,6 +83,28 @@ export default function Button({ value }) {
       })
     )
   }
+
+
+  // When user clicks on equals "=" button
+  function equalsClick() {
+    function math(a, b, opt) {
+      const result = {
+        "+": (a, b) => a + b,
+        "-": (a, b) => a - b,
+        "x": (a, b) => a * b,
+        "÷": (a, b) => a / b,
+      }
+      return result[opt](a, b)
+    }
+    return (
+      setCalc({
+        opt: "",
+        number: 0,
+        result: math(calc.result, calc.number, calc.opt)
+      })
+    )
+  }
+
 
   return (
     <button onClick={handleButtonClick} className={`${getStyleName(value)} button`}>
