@@ -124,9 +124,8 @@ export default function Button({ value }) {
   function invertClick() {
     return (
       setCalc({
-        opt: "",
-        number: calc.number * -1,
-        result: calc.result * -1
+        ...calc, 
+        number: calc.number !== 0 ? calc.number * -1 : calc.number,
       })
     )
   }
